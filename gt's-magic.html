@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>view of life</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			*{
+				text-decoration: none;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				color: white;
+				font-family: "Microsoft Yahei";
+
+			}
+			.out{
+				position: relative;
+				width: 300px;
+				height: 150px;
+				overflow: hidden;
+				margin: 0 auto;
+				background-color: gray;
+				padding: 10px;
+			}
+			button{
+				border: none;
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="out">
+			<div class="c_1">
+				<p>这件事有没有选择</p>
+				<input type="radio" name="1" id="1" value="1" />Y
+				<input type="radio" name="1" id="2" value="0" />N
+			</div>
+			<div class="c_2">
+				<p>理性上接不接受</p>
+				<input type="radio" name="2" id="3" value="10" />Y
+				<input type="radio" name="2" id="4" value="0" />N
+			</div>
+			<div class="c_3">
+				<p>感性上愉不愉悦</p>
+				<input type="radio" name="3" id="5" value="100" />Y
+				<input type="radio" name="3" id="6" value="0" />N
+			</div>
+			<button>GT人生观</button>
+			<span></span>
+		</div>
+		<script type="text/javascript">
+			var count = 0;
+			$(document).ready(function(){
+				var JSONobject = {
+					"a0":"对你表示可怜",
+					"a1":"对你表示嘲讽",
+					"a10":"不喜欢做的事",
+					"a11":"强迫自己做事",
+					"a100":"为你感到开心",
+					"a101":"做了疯狂的事",
+					"a110":"正常存在的事",
+					"a111":"选择自己的路"
+				}
+				function check1(count){
+					var m = $(".c_1>input:checked").val();
+					count += parseInt(m);
+					// alert(count);
+					check2(count);
+					return count;
+				}
+				function check2(count){
+					var m = $(".c_2>input:checked").val();
+					count += parseInt(m);
+					// alert(count);
+					check3(count);	
+					return count;
+				}
+				function check3(count){
+					var m = $(".c_3>input:checked").val();
+					count += parseInt(m);
+//					alert(count);
+					func_1(count);
+					return count;
+				}
+//				function choose(){
+//					var memo = "";
+//					switch (){
+//						case value:
+//						
+//							break;
+//						default:
+//							break;
+//					}
+//					return
+//				}
+				$("button").click(function(){
+					check1(count);	
+				})
+				function func_1(count){
+					switch (count){
+						case 0:
+							$("span").html(JSONobject.a0);
+							break;
+						case 1:
+							$("span").html(JSONobject.a1);
+							break;
+						case 10:
+							$("span").html(JSONobject.a10);
+							break;
+						case 11:
+							$("span").html(JSONobject.a11);
+							break;
+						case 100:
+							$("span").html(JSONobject.a100);
+							break;
+						case 101:
+							$("span").html(JSONobject.a101);
+							break;
+						case 110:
+							$("span").html(JSONobject.a110);
+							break;
+						case 111:
+							$("span").html(JSONobject.a111);
+							break;
+						default:
+							break;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
